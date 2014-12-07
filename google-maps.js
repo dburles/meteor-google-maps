@@ -1,4 +1,13 @@
 GoogleMaps = {
+  load: _.once(function(key) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+      'callback=GoogleMaps.initialize';
+    if (key)
+      script.src += '?key=' + key;
+    document.body.appendChild(script);
+  }),
   _loaded: new ReactiveVar(false),
   loaded: function() {
     return this._loaded.get();
@@ -22,6 +31,9 @@ GoogleMaps = {
   //       return options();
   //   };
   // },
+  get: function(name) {
+    return this.maps[name];
+  },
   _create: function(name, options) {
     this.maps[name] = {
       instance: options.instance,
@@ -30,16 +42,6 @@ GoogleMaps = {
     this._ready(name, this.maps[name]);
   }
 };
-
-Meteor.startup(function() {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-    'callback=GoogleMaps.initialize';
-  if (GoogleMaps.key)
-    script.src += '?key=' + GoogleMaps.key;
-  document.body.appendChild(script);
-});
 
 Template.googleMap.rendered = function() {
   var self = this;

@@ -7,7 +7,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
-  api.use(['templating', 'reactive-var']);
+  api.use(['templating', 'reactive-var', 'underscore']);
   api.addFiles([
     'google-maps.html',
     'google-maps.js'], 'client');

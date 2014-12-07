@@ -15,10 +15,10 @@ $ meteor add dburles:google-maps
 
 ## Usage Overview
 
-If required you can set an API key.
+Call the `load` method to load the maps API. If required you can pass in an API key: `GoogleMaps.load('xxx');`
 
 ```js
-GoogleMaps.key = 'xxx';
+GoogleMaps.load();
 ```
 
 Wrap the map template to set the width and height.
