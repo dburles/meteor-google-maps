@@ -16,6 +16,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('google-maps');
+  api.use('dburles:google-maps');
   api.addFiles('google-maps-tests.js');
 });
