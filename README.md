@@ -1,6 +1,8 @@
 Meteor Google Maps
 ==================
 
+## Note: The API is currently in a state of flux, expect changes!
+
 Latest version of the Google Maps Javascript API with an interface designed for Meteor.
 
 - Supports multiple map instances
