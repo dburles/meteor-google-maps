@@ -23,7 +23,6 @@ Call the `load` method to load the maps API. If required you can pass in an API 
 
 ```js
 if (Meteor.isClient) {
-  ...
   Meteor.startup(function() {
     GoogleMaps.load();
   });
