@@ -131,7 +131,11 @@ The callback function returns an object containing two properties:
 - options
   - The options passed through from the Template helper (see Usage Overview above)
 
+You can also access this object directly by name:
 
+```js
+GoogleMaps.maps.exampleMap
+```
 
 ### License
 
