@@ -1,11 +1,14 @@
 GoogleMaps = {
-  load: _.once(function(key) {
+  load: _.once(function(library, key) {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
       'callback=GoogleMaps.initialize';
+    if (library)
+      script.src += '&library=' + library;
     if (key)
-      script.src += '?key=' + key;
+      script.src += '&key=' + key;
+
     document.body.appendChild(script);
   }),
   _loaded: new ReactiveVar(false),
