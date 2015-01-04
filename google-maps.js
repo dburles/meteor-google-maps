@@ -4,7 +4,7 @@ GoogleMaps = {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-      'callback=GoogleMaps.initialize';
+      'callback=GoogleMaps._initialize';
     if (options.library)
       script.src += '&library=' + options.library;
     if (options.key)
@@ -18,7 +18,7 @@ GoogleMaps = {
   },
   maps: {},
   _callbacks: {},
-  initialize: function() {
+  _initialize: function() {
     this._loaded.set(true);
   },
   _ready: function(name, map) {
