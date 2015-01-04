@@ -55,7 +55,7 @@ Wrap the map template to set the width and height.
 }
 ```
 
-Pass through the map initialization options by creating a template helper.
+Pass through the map initialization options by creating a template helper. We can also place the `GoogleMaps.ready` method within the helper as a convenience as we may wish to make use of the template data context.
 
 ```js
 Template.body.helpers({
