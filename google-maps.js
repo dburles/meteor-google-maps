@@ -1,13 +1,14 @@
 GoogleMaps = {
-  load: _.once(function(library, key) {
+  load: _.once(function(options) {
+    options = options || {};
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
       'callback=GoogleMaps.initialize';
-    if (library)
-      script.src += '&library=' + library;
-    if (key)
-      script.src += '&key=' + key;
+    if (options.library)
+      script.src += '&library=' + options.library;
+    if (options.key)
+      script.src += '&key=' + options.key;
 
     document.body.appendChild(script);
   }),

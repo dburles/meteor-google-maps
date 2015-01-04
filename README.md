@@ -5,7 +5,7 @@ Latest version of the Google Maps Javascript API with an interface designed for 
 
 - Supports multiple map instances
 - Provides callbacks for individual maps when they render
-- API key setup
+- API key + libraries
 
 ## Note
 
