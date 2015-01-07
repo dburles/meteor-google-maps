@@ -5,8 +5,8 @@ GoogleMaps = {
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
       'callback=GoogleMaps._initialize';
-    if (options.library)
-      script.src += '&library=' + options.library;
+    if (options.libraries)
+      script.src += '&libraries=' + options.libraries;
     if (options.key)
       script.src += '&key=' + options.key;
 
