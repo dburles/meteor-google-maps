@@ -22,11 +22,15 @@ GoogleMaps = {
     this._loaded.set(true);
   },
   _ready: function(name, map) {
-    if (_.isFunction(this._callbacks[name]))
-      this._callbacks[name](map);
+    _.each(this._callbacks[name], function(cb) {
+      if (_.isFunction(cb))
+        cb(map);
+    });
   },
   ready: function(name, cb) {
-    this._callbacks[name] = cb;
+    if (! this._callbacks[name])
+      this._callbacks[name] = [];
+    this._callbacks[name].push(cb);
   },
   // options: function(options) {
   //   var self = this;
