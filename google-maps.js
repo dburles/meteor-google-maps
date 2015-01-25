@@ -62,6 +62,8 @@ Template.googleMap.rendered = function() {
         throw new Meteor.Error("GoogleMaps - Missing argument: name");
       if ($.isEmptyObject(data.options))
         throw new Meteor.Error("GoogleMaps - Missing argument: options");
+      if (!(data.options instanceof Object))
+        throw new Meteor.Error("GoogleMaps - options argument is not an object");
       
       var canvas = self.$('.map-canvas').get(0);
 
