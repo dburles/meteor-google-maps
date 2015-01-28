@@ -36,7 +36,7 @@ GoogleMaps = {
   _create: function(name, options) {
     this.maps[name] = {
       instance: options.instance,
-      options: options.options,
+      options: options.options
     };
     //helper is loaded & template is created
     this._created.set(name,true);
