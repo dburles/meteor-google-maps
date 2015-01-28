@@ -4,7 +4,7 @@ GoogleMaps = {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-    'callback=GoogleMaps._initialize';
+      'callback=GoogleMaps._initialize';
     if (options.libraries)
       script.src += '&libraries=' + options.libraries;
     if (options.key)
@@ -17,18 +17,20 @@ GoogleMaps = {
     return this._loaded.get();
   },
   maps: {},
+  _callbacks: {},
   _initialize: function() {
     this._loaded.set(true);
   },
+  _ready: function(name, map) {
+    _.each(this._callbacks[name], function(cb) {
+      if (_.isFunction(cb))
+        cb(map);
+    });
+  },
   ready: function(name, cb) {
-    if (_.isFunction(cb)) {
-      var self = this;
-      Template.instance().autorun(function() {
-        if (GoogleMaps._created.get(name)) {
-          cb(self.maps[name]);
-        }
-      });
-    } // else throw error?
+    if (! this._callbacks[name])
+      this._callbacks[name] = [];
+    this._callbacks[name].push(cb);
   },
   get: function(name) {
     return this.maps[name];
@@ -55,9 +57,7 @@ Template.googleMap.rendered = function() {
         throw new Meteor.Error("GoogleMaps - Missing argument: options");
       if (!(data.options instanceof Object))
         throw new Meteor.Error("GoogleMaps - options argument is not an object");
-
       var canvas = self.$('.map-canvas').get(0);
-
       GoogleMaps._create(data.name, {
         instance: new google.maps.Map(canvas, data.options),
         options: data.options

@@ -5,7 +5,7 @@ Latest version of the Google Maps Javascript API with an interface designed for 
 
 - Supports multiple map instances
 - Provides callbacks for individual maps when they render
-- API key setup
+- API key + libraries
 
 ## Note
 
@@ -19,7 +19,7 @@ $ meteor add dburles:google-maps
 
 ## Usage Overview
 
-Call the `load` method to load the maps API. If required you can pass in an API key: `GoogleMaps.load('xxx');`.
+Call the `load` method to load the maps API.
 
 ```js
 if (Meteor.isClient) {
@@ -27,6 +27,15 @@ if (Meteor.isClient) {
     GoogleMaps.load();
   });
 }
+```
+
+You can also load the API only on specific routes when using [Iron Router](https://atmospherejs.com/iron/router).
+
+```js
+Router.onBeforeAction(function() {
+  GoogleMaps.load();
+  this.next();
+}, { only: ['routeOne', 'routeTwo'] });
 ```
 
 Wrap the map template to set the width and height.
@@ -46,7 +55,7 @@ Wrap the map template to set the width and height.
 }
 ```
 
-Pass through the map initialization options by creating a template helper.
+Pass through the map initialization options by creating a template helper. We can also place the `GoogleMaps.ready` method within the helper as a convenience as we may wish to make use of the template data context.
 
 ```js
 Template.body.helpers({
@@ -80,7 +89,53 @@ GoogleMaps.maps.exampleMap.instance
 
 ## API
 
-TODO
+#### GoogleMaps.load([options])
+
+Loads the map API.
+
+- options (Object)
+  - `key` *String*
+    - API key
+  - `libraries` *String*
+    - Specify [Google Maps Libraries](https://developers.google.com/maps/documentation/javascript/libraries)
+
+Example:
+
+```js
+GoogleMaps.load({ key: '12345', libraries: 'geometry,places' }); 
+```
+
+#### GoogleMaps.loaded()
+
+Reactive method which returns `true` once the maps API has loaded.
+
+#### GoogleMaps.ready('name', callback)
+
+Runs once the specified map has rendered.
+
+- `name` *String*
+- `callback` *Function*
+
+Example:
+
+```js
+GoogleMaps.ready('exampleMap', function(map) {
+  // map.instance, map.options
+});
+```
+
+The callback function returns an object containing two properties:
+
+- instance
+  - The Google map instance
+- options
+  - The options passed through from the Template helper (see Usage Overview above)
+
+You can also access this object directly by name:
+
+```js
+GoogleMaps.maps.exampleMap
+```
 
 ### License
 
