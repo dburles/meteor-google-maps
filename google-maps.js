@@ -1,14 +1,11 @@
 GoogleMaps = {
   load: _.once(function(options) {
-    options = options || {};
+    options = _.extend({ v: '3.exp' }, options);
+    var params = _.map(options, function(value, key) { return key + '=' + value; }).join('&');
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-      'callback=GoogleMaps._initialize';
-    if (options.libraries)
-      script.src += '&libraries=' + options.libraries;
-    if (options.key)
-      script.src += '&key=' + options.key;
+    script.src = 'https://maps.googleapis.com/maps/api/js?' + params +
+      '&callback=GoogleMaps._initialize';
 
     document.body.appendChild(script);
   }),
