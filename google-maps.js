@@ -27,7 +27,9 @@ GoogleMaps = {
   ready: function(name, cb) {
     if (! this._callbacks[name])
       this._callbacks[name] = [];
-    this._callbacks[name].push(cb);
+    // make sure we run the callback only once
+    // as the tilesloaded event will also run after initial load
+    this._callbacks[name].push(_.once(cb));
   },
   // options: function(options) {
   //   var self = this;
@@ -40,11 +42,14 @@ GoogleMaps = {
     return this.maps[name];
   },
   _create: function(name, options) {
-    this.maps[name] = {
+    var self = this;
+    self.maps[name] = {
       instance: options.instance,
       options: options.options
     };
-    this._ready(name, this.maps[name]);
+    google.maps.event.addListener(options.instance, 'tilesloaded', function() {
+      self._ready(name, self.maps[name]);
+    });
   }
 };
 
