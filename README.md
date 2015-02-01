@@ -91,18 +91,13 @@ GoogleMaps.maps.exampleMap.instance
 
 #### GoogleMaps.load([options])
 
-Loads the map API.
-
-- options (Object)
-  - `key` *String*
-    - API key
-  - `libraries` *String*
-    - Specify [Google Maps Libraries](https://developers.google.com/maps/documentation/javascript/libraries)
+Loads the map API. Options passed in are automatically appended to the maps url. 
+By default `v3.exp` will be loaded. For full documentation on these options see https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
 
 Example:
 
 ```js
-GoogleMaps.load({ key: '12345', libraries: 'geometry,places' }); 
+GoogleMaps.load({ v: '3', key: '12345', libraries: 'geometry,places' });
 ```
 
 #### GoogleMaps.loaded()
