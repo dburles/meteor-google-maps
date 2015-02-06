@@ -6,6 +6,7 @@ Latest version of the Google Maps Javascript API with an interface designed for 
 - Supports multiple map instances
 - Provides callbacks for individual maps when they render
 - API key + libraries
+- StreetViewPanorama support
 
 ## Note
 
@@ -88,6 +89,15 @@ GoogleMaps.maps.exampleMap.instance
 ```
 
 ## API
+
+#### {{> googleMap [type=String] name=String options=Object}}
+
+- type (Optional)
+  - Currently supported types: Map, StreetViewPanorama (defaults to 'Map')
+- name
+  - Provide a name to reference this map
+- options
+  - Map initialization options
 
 #### GoogleMaps.load([options])
 

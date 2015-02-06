@@ -1,3 +1,5 @@
+var supportedTypes = ['Map', 'StreetViewPanorama'];
+
 GoogleMaps = {
   load: _.once(function(options) {
     options = _.extend({ v: '3.exp' }, options);
@@ -47,9 +49,15 @@ GoogleMaps = {
       instance: options.instance,
       options: options.options
     };
-    google.maps.event.addListener(options.instance, 'tilesloaded', function() {
+
+    if (options.type === 'StreetViewPanorama') {
+      options.instance.setVisible(true);
       self._ready(name, self.maps[name]);
-    });
+    } else {
+      google.maps.event.addListener(options.instance, 'tilesloaded', function() {
+        self._ready(name, self.maps[name]);
+      });
+    }
   }
 };
 
@@ -69,8 +77,14 @@ Template.googleMap.rendered = function() {
       
       var canvas = self.$('.map-canvas').get(0);
 
+      // default to Map
+      var type = data.type ? data.type : 'Map';
+      if (! _.include(supportedTypes, type))
+        throw new Meteor.Error("GoogleMaps - Invalid type argument: " + type);
+
       GoogleMaps._create(data.name, {
-        instance: new google.maps.Map(canvas, data.options),
+        type: type,
+        instance: new google.maps[type](canvas, data.options),
         options: data.options
       });
     }
