@@ -112,7 +112,7 @@ GoogleMaps.load({ v: '3', key: '12345', libraries: 'geometry,places' });
 
 #### GoogleMaps.loaded()
 
-Reactive method which returns `true` once the maps API has loaded.
+Reactive method which returns `true` once the maps API has loaded, or after manually calling `GoogleMaps.initialize()` (See further down).
 
 #### GoogleMaps.ready('name', callback)
 
@@ -141,6 +141,11 @@ You can also access this object directly by name:
 ```js
 GoogleMaps.maps.exampleMap
 ```
+
+#### GoogleMaps.initialize()
+
+This function is passed into the Google maps URL as the callback parameter when calling `GoogleMaps.load()`.
+In the case where the maps library has already been loaded by some other means, calling `GoogleMaps.initialize()` will set `GoogleMaps.loaded()` to `true`.
 
 ### License
 
