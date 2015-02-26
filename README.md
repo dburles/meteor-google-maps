@@ -94,6 +94,12 @@ Access a map instance any time by using the `maps` object.
 GoogleMaps.maps.exampleMap.instance
 ```
 
+## Demo Project
+
+This is a simple demo project that makes use of the examples above:
+
+https://github.com/dburles/meteor-google-maps-demo
+
 ## API
 
 #### {{> googleMap [type=String] name=String options=Object}}
