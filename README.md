@@ -1,6 +1,8 @@
 Meteor Google Maps
 ==================
 
+[![Join the chat at https://gitter.im/dburles/meteor-google-maps](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dburles/meteor-google-maps?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Latest version of the Google Maps Javascript API with an interface designed for Meteor.
 
 - Supports multiple map instances
