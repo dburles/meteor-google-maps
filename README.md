@@ -54,6 +54,7 @@ Wrap the map template to set the width and height.
 ```css
 .map-container {
   width: 800px;
+  max-width: 100%;
   height: 500px;
 }
 ```
