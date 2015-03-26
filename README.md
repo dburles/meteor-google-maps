@@ -10,6 +10,15 @@ Latest version of the [Google Maps Javascript API](https://developers.google.com
 - API key + libraries
 - StreetViewPanorama support
 
+
+## Examples
+
+How to create a reactive Google map
+http://meteorcapture.com/how-to-create-a-reactive-google-map/
+
+Demo project using the examples below
+https://github.com/dburles/meteor-google-maps-demo
+
 ## Note
 
 The maps API is *client-side only*. Server side support may be added soon.
@@ -96,12 +105,6 @@ Access a map instance any time by using the `maps` object.
 ```js
 GoogleMaps.maps.exampleMap.instance
 ```
-
-## Demo Project
-
-This is a simple demo project that makes use of the examples above:
-
-https://github.com/dburles/meteor-google-maps-demo
 
 ## API
 
