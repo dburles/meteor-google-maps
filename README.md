@@ -76,7 +76,7 @@ Template.body.helpers({
 });
 ```
 
-Place the `ready` callback within the template `created` callback.
+Place the `ready` callback within the template `onCreated` callback.
 
 ```js
 Template.body.onCreated(function() {
