@@ -3,7 +3,7 @@ Meteor Google Maps
 
 [![Join the chat at https://gitter.im/dburles/meteor-google-maps](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dburles/meteor-google-maps?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Latest version of the Google Maps Javascript API with an interface designed for Meteor.
+Latest version of the [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) with an interface designed for Meteor.
 
 - Supports multiple map instances
 - Provides callbacks for individual maps when they render
@@ -79,7 +79,7 @@ Template.body.helpers({
 Place the `ready` callback within the template `created` callback.
 
 ```js
-Template.body.created = function() {
+Template.body.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('exampleMap', function(map) {
     // Add a marker to the map once it's ready
@@ -88,7 +88,7 @@ Template.body.created = function() {
       map: map.instance
     });
   });
-};
+});
 ```
 
 Access a map instance any time by using the `maps` object.
