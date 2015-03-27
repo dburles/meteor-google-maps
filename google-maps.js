@@ -47,7 +47,26 @@ GoogleMaps = {
     var self = this;
     self.maps[name] = {
       instance: options.instance,
-      options: options.options
+      options: options.options,
+      addListener : function(instanceObject , eventName, callback){
+
+        if(typeof instanceObject == 'string'){
+            callback = eventName;
+            eventName = instanceObject;
+            instanceObject = options.instance;
+        } 
+
+        google.maps.event.addListener(instanceObject, eventName, callback);
+      },
+      clearListeners: function(instanceObject, eventName){
+
+        if(typeof instanceObject == 'string'){
+            eventName = instanceObject;
+            instanceObject = options.instance;
+        } 
+
+        google.maps.event.clearListeners(instanceObject, eventName);
+      }
     };
 
     if (options.type === 'StreetViewPanorama') {

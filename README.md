@@ -106,6 +106,43 @@ Access a map instance any time by using the `maps` object.
 GoogleMaps.maps.exampleMap.instance
 ```
 
+###Events
+
+You can add listeners in your map instance.
+
+```js
+Template.body.onCreated(function() {
+  
+  GoogleMaps.ready('exampleMap', function(map) {
+    
+    var marker = new google.maps.Marker({
+      position: map.options.center,
+      map: map.instance
+    });
+
+    //Add event listener once the map is ready, for example click in map
+    map.addListener('click',function(){
+      console.log('click!')
+    });
+
+    //To add event listener to another object, passing the object in first argument, for example click in marker
+    map.addListener(marker,'click',function(){
+      console.log('click in marker!')
+    });  
+
+  });
+});
+```
+
+Or remove the listeners.
+```js
+map.clearListeners('click');  //To remove click in your map instance
+GoogleMaps.maps.exampleMap.map.clearListeners('click'); //The same thing as above
+
+map.clearListeners(marker,'click');  //To remove click in your marker
+GoogleMaps.maps.exampleMap.map.clearListeners(marker,'click');  //The same thing as above
+```
+
 ## API
 
 #### {{> googleMap [type=String] name=String options=Object}}
