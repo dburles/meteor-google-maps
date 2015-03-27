@@ -136,10 +136,10 @@ Template.body.onCreated(function() {
 
 Or remove the listeners.
 ```js
-map.clearListeners('click');  //To remove click in your map instance
+map.clearListeners('click');  //To remove click  listener in your map instance
 GoogleMaps.maps.exampleMap.map.clearListeners('click'); //The same thing as above
 
-map.clearListeners(marker,'click');  //To remove click in your marker
+map.clearListeners(marker,'click');  //To remove click listener in your marker
 GoogleMaps.maps.exampleMap.map.clearListeners(marker,'click');  //The same thing as above
 ```
 
