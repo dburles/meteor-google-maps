@@ -169,9 +169,11 @@ In the case where the maps library has already been loaded by some other means, 
 
 If you're targeting mobile platforms you'll need to configure the following access rules in `mobile-config.js`.
 
+```js
 App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
+```
 
 For more refer to the [official documentation](http://docs.meteor.com/#/full/mobileconfigjs).
 
