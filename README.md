@@ -165,6 +165,16 @@ GoogleMaps.maps.exampleMap
 This function is passed into the Google maps URL as the callback parameter when calling `GoogleMaps.load()`.
 In the case where the maps library has already been loaded by some other means, calling `GoogleMaps.initialize()` will set `GoogleMaps.loaded()` to `true`.
 
+### Mobile platforms
+
+If you're targeting mobile platforms you'll need to configure the following access rules in `mobile-config.js`.
+
+App.accessRule('*.google.com/*');
+App.accessRule('*.googleapis.com/*');
+App.accessRule('*.gstatic.com/*');
+
+For more refer to the [official documentation](http://docs.meteor.com/#/full/mobileconfigjs).
+
 ### License
 
 MIT
