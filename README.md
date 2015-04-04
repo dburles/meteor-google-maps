@@ -14,9 +14,11 @@ Latest version of the [Google Maps Javascript API](https://developers.google.com
 ## Examples
 
 How to create a reactive Google map
+
 http://meteorcapture.com/how-to-create-a-reactive-google-map/
 
 Demo project using the examples below
+
 https://github.com/dburles/meteor-google-maps-demo
 
 ## Note
