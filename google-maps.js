@@ -61,12 +61,16 @@ GoogleMaps = {
   }
 };
 
-Template.googleMap.rendered = function() {
+Template.googleMap.onRendered(function() {
   var self = this;
   self.autorun(function() {
     // if the api has loaded
     if (GoogleMaps.loaded()) {
       var data = Template.currentData();
+
+      // initialize the map just once
+      if (self.initialized)
+        return;
       
       if (! data.name)
         throw new Meteor.Error("GoogleMaps - Missing argument: name");
@@ -87,6 +91,8 @@ Template.googleMap.rendered = function() {
         instance: new google.maps[type](canvas, data.options),
         options: data.options
       });
+
+      self.initialized = true;
     }
   });
-};
+});
