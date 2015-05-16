@@ -11,6 +11,10 @@ GoogleMaps = {
 
     document.body.appendChild(script);
   }),
+  utilityLibraries: [],
+  loadUtilityLibrary: function(path) {
+    this.utilityLibraries.push(path);
+  },
   _loaded: new ReactiveVar(false),
   loaded: function() {
     return this._loaded.get();
@@ -19,6 +23,13 @@ GoogleMaps = {
   _callbacks: {},
   initialize: function() {
     this._loaded.set(true);
+    _.each(this.utilityLibraries, function(path) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = path;
+
+      document.body.appendChild(script);
+    });
   },
   _ready: function(name, map) {
     _.each(this._callbacks[name], function(cb) {
