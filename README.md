@@ -130,6 +130,10 @@ Example:
 GoogleMaps.load({ v: '3', key: '12345', libraries: 'geometry,places' });
 ```
 
+#### GoogleMaps.loadUtilityLibrary('/path/to/library.js')
+
+A method to ease loading external [utility libraries](https://code.google.com/p/google-maps-utility-library-v3/wiki/Libraries). These libraries will load once the Google Maps API has initialized.
+
 #### GoogleMaps.loaded()
 
 Reactive method which returns `true` once the maps API has loaded, or after manually calling `GoogleMaps.initialize()` (See further down).
