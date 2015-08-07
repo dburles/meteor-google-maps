@@ -32,6 +32,7 @@ GoogleMaps = {
     });
   },
   _ready: function(name, map) {
+    console.log('ready');
     _.each(this._callbacks[name], function(cb) {
       if (_.isFunction(cb))
         cb(map);
@@ -65,10 +66,14 @@ GoogleMaps = {
       options.instance.setVisible(true);
       self._ready(name, self.maps[name]);
     } else {
+      console.log('test 1');
       google.maps.event.addListener(options.instance, 'tilesloaded', function() {
+        console.log('test');
         self._ready(name, self.maps[name]);
       });
     }
+
+    return self.maps[name];
   }
 };
 
@@ -83,6 +88,8 @@ Template.googleMap.onRendered(function() {
         return;
       if (! data.name)
         throw new Meteor.Error("GoogleMaps - Missing argument: name");
+
+      self._name = data.name;
       
       var canvas = self.$('.map-canvas').get(0);
 
@@ -100,4 +107,9 @@ Template.googleMap.onRendered(function() {
       c.stop();
     }
   });
+});
+
+Template.googleMap.onDestroyed(function() {
+  google.maps.event.clearInstanceListeners(GoogleMaps.maps[this._name].instance);
+  delete GoogleMaps.maps[this._name];
 });
