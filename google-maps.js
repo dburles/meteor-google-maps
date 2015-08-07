@@ -32,7 +32,6 @@ GoogleMaps = {
     });
   },
   _ready: function(name, map) {
-    console.log('ready');
     _.each(this._callbacks[name], function(cb) {
       if (_.isFunction(cb))
         cb(map);
@@ -66,14 +65,10 @@ GoogleMaps = {
       options.instance.setVisible(true);
       self._ready(name, self.maps[name]);
     } else {
-      console.log('test 1');
       google.maps.event.addListener(options.instance, 'tilesloaded', function() {
-        console.log('test');
         self._ready(name, self.maps[name]);
       });
     }
-
-    return self.maps[name];
   }
 };
 
