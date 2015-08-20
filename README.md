@@ -11,6 +11,22 @@ Latest version of the [Google Maps Javascript API](https://developers.google.com
 - API key + libraries
 - StreetViewPanorama support
 
+## Table of Contents
+
+- [Examples](#examples)
+- [Note](#note)
+- [Installation](#installation)
+- [Usage Overview](#usage-overview)
+- [API](#api)
+  - [Blaze Template](#blaze-template)
+  - [create](#create)
+  - [load](#load)
+  - [loadUtilityLibrary](#loadutilitylibrary)
+  - [loaded](#loaded)
+  - [ready](#ready)
+  - [initialize](#initialize)
+- [Mobile Platforms](#mobile-platforms)
+- [License](#license)
 
 ## Examples
 
@@ -111,7 +127,9 @@ GoogleMaps.maps.exampleMap.instance
 
 ## API
 
-#### {{> googleMap [type=String] name=String options=Object}}
+#### Blaze Template
+
+`{{> googleMap [type=String] name=String options=Object}}`
 
 - type (Optional)
   - Currently supported types: Map, StreetViewPanorama (defaults to 'Map')
@@ -120,7 +138,9 @@ GoogleMaps.maps.exampleMap.instance
 - options
   - Map initialization options
 
-#### GoogleMaps.create({object})
+#### create
+
+`GoogleMaps.create({object})`
 
 An alternative to using the `googleMap` Blaze template. Call this function to create a new map instance and attach it to a DOM element.
 
@@ -144,7 +164,9 @@ GoogleMaps.create({
 });
 ```
 
-#### GoogleMaps.load([options])
+#### load
+
+`GoogleMaps.load([options])`
 
 Loads the map API. Options passed in are automatically appended to the maps url. 
 By default `v3.exp` will be loaded. For full documentation on these options see https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
@@ -155,15 +177,21 @@ Example:
 GoogleMaps.load({ v: '3', key: '12345', libraries: 'geometry,places' });
 ```
 
-#### GoogleMaps.loadUtilityLibrary('/path/to/library.js')
+#### loadUtilityLibrary
+
+`GoogleMaps.loadUtilityLibrary('/path/to/library.js')`
 
 A method to ease loading external [utility libraries](https://code.google.com/p/google-maps-utility-library-v3/wiki/Libraries). These libraries will load once the Google Maps API has initialized.
 
-#### GoogleMaps.loaded()
+#### loaded
+
+`GoogleMaps.loaded()`
 
 Reactive method which returns `true` once the maps API has loaded, or after manually calling `GoogleMaps.initialize()` (See further down).
 
-#### GoogleMaps.ready('name', callback)
+#### ready
+
+`GoogleMaps.ready('name', callback)`
 
 Runs once the specified map has rendered.
 
@@ -191,7 +219,9 @@ You can also access this object directly by name:
 GoogleMaps.maps.exampleMap
 ```
 
-#### GoogleMaps.initialize()
+#### initialize
+
+`GoogleMaps.initialize()`
 
 This function is passed into the Google maps URL as the callback parameter when calling `GoogleMaps.load()`.
 In the case where the maps library has already been loaded by some other means, calling `GoogleMaps.initialize()` will set `GoogleMaps.loaded()` to `true`.
