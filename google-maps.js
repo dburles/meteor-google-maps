@@ -69,6 +69,18 @@ GoogleMaps = {
         self._ready(name, self.maps[name]);
       });
     }
+  },
+  create: function(options) {
+    // default to Map
+    var type = options.type ? options.type : 'Map';
+    if (! _.include(supportedTypes, type))
+      throw new Meteor.Error("GoogleMaps - Invalid type argument: " + type);
+
+    this._create(options.name, {
+      type: type,
+      instance: new google.maps[type](options.element, options.options),
+      options: options.options
+    });
   }
 };
 
@@ -88,14 +100,10 @@ Template.googleMap.onRendered(function() {
       
       var canvas = self.$('.map-canvas').get(0);
 
-      // default to Map
-      var type = data.type ? data.type : 'Map';
-      if (! _.include(supportedTypes, type))
-        throw new Meteor.Error("GoogleMaps - Invalid type argument: " + type);
-
-      GoogleMaps._create(data.name, {
-        type: type,
-        instance: new google.maps[type](canvas, data.options),
+      GoogleMaps.create({
+        name: data.name,
+        type: data.type,
+        element: canvas,
         options: data.options
       });
 

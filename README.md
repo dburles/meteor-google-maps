@@ -124,6 +124,30 @@ GoogleMaps.maps.exampleMap.instance
 - options
   - Map initialization options
 
+#### GoogleMaps.create({object})
+
+An alternative to using the `googleMap` Blaze template. Call this function to create a new map instance and attach it to a DOM element.
+
+Options:
+
+- `name` - Name to reference this map.
+- `element` - A DOM element to attach the map to.
+- `options` - The map options.
+- `type` (optional) - Map or StreetViewPanorama. Defaults to Map.
+
+Example:
+
+```js
+GoogleMaps.create({
+  name: 'exampleMap',
+  element: document.getElementById('exampleMap'),
+  options: {
+    center: new google.maps.LatLng(-37.8136, 144.9631),
+    zoom: 8
+  }
+});
+```
+
 #### GoogleMaps.load([options])
 
 Loads the map API. Options passed in are automatically appended to the maps url. 
