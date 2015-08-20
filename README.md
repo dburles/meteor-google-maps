@@ -22,6 +22,10 @@ How to create a reactive Google map
 
 http://meteorcapture.com/how-to-create-a-reactive-google-map
 
+React example
+
+https://github.com/dburles/meteor-google-maps-react-example
+
 Demo project for the examples below
 
 https://github.com/dburles/meteor-google-maps-demo
