@@ -14,21 +14,13 @@ Latest version of the [Google Maps Javascript API](https://developers.google.com
 
 ## Examples
 
-Reactive geolocation
+[Reactive geolocation](http://meteorcapture.com/reactive-geolocation-with-google-maps)
 
-http://meteorcapture.com/reactive-geolocation-with-google-maps
+[How to create a reactive Google map](http://meteorcapture.com/how-to-create-a-reactive-google-map)
 
-How to create a reactive Google map
+[React example](https://github.com/dburles/meteor-google-maps-react-example)
 
-http://meteorcapture.com/how-to-create-a-reactive-google-map
-
-React example
-
-https://github.com/dburles/meteor-google-maps-react-example
-
-Demo project for the examples below
-
-https://github.com/dburles/meteor-google-maps-demo
+[Demo project for the examples below](https://github.com/dburles/meteor-google-maps-demo)
 
 ## Note
 
