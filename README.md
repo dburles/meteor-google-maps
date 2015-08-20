@@ -13,19 +13,19 @@ Latest version of the [Google Maps Javascript API](https://developers.google.com
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Examples](#examples)
-- [Usage Overview](#usage-overview)
-- [API](#api)
-  - [Blaze Template](#blaze-template)
-  - [create](#create)
-  - [load](#load)
-  - [loadUtilityLibrary](#loadutilitylibrary)
-  - [loaded](#loaded)
-  - [ready](#ready)
-  - [initialize](#initialize)
-- [Mobile Platforms](#mobile-platforms)
-- [License](#license)
+- [Installation](https://github.com/dburles/meteor-google-maps#installation)
+- [Examples](https://github.com/dburles/meteor-google-maps#examples)
+- [Usage Overview](https://github.com/dburles/meteor-google-maps#usage-overview)
+- [API](https://github.com/dburles/meteor-google-maps#api)
+  - [Blaze Template](https://github.com/dburles/meteor-google-maps#blaze-template)
+  - [create](https://github.com/dburles/meteor-google-maps#create)
+  - [load](https://github.com/dburles/meteor-google-maps#load)
+  - [loadUtilityLibrary](https://github.com/dburles/meteor-google-maps#loadutilitylibrary)
+  - [loaded](https://github.com/dburles/meteor-google-maps#loaded)
+  - [ready](https://github.com/dburles/meteor-google-maps#ready)
+  - [initialize](https://github.com/dburles/meteor-google-maps#initialize)
+- [Mobile Platforms](https://github.com/dburles/meteor-google-maps#mobile-platforms)
+- [License](https://github.com/dburles/meteor-google-maps#license)
 
 ## Note
 
