@@ -13,9 +13,8 @@ Latest version of the [Google Maps Javascript API](https://developers.google.com
 
 ## Table of Contents
 
-- [Examples](#examples)
-- [Note](#note)
 - [Installation](#installation)
+- [Examples](#examples)
 - [Usage Overview](#usage-overview)
 - [API](#api)
   - [Blaze Template](#blaze-template)
@@ -28,16 +27,6 @@ Latest version of the [Google Maps Javascript API](https://developers.google.com
 - [Mobile Platforms](#mobile-platforms)
 - [License](#license)
 
-## Examples
-
-[Reactive geolocation](http://meteorcapture.com/reactive-geolocation-with-google-maps)
-
-[How to create a reactive Google map](http://meteorcapture.com/how-to-create-a-reactive-google-map)
-
-[React example](https://github.com/dburles/meteor-google-maps-react-example)
-
-[Demo project for the examples below](https://github.com/dburles/meteor-google-maps-demo)
-
 ## Note
 
 The maps API is *client-side only*. Server side support may be added soon.
@@ -47,6 +36,16 @@ The maps API is *client-side only*. Server side support may be added soon.
 ```sh
 $ meteor add dburles:google-maps
 ```
+
+## Examples
+
+[Reactive geolocation](http://meteorcapture.com/reactive-geolocation-with-google-maps)
+
+[How to create a reactive Google map](http://meteorcapture.com/how-to-create-a-reactive-google-map)
+
+[React example](https://github.com/dburles/meteor-google-maps-react-example)
+
+[Demo project for the examples below](https://github.com/dburles/meteor-google-maps-demo)
 
 ## Usage Overview
 
@@ -127,7 +126,7 @@ GoogleMaps.maps.exampleMap.instance
 
 ## API
 
-#### Blaze Template
+### Blaze Template
 
 `{{> googleMap [type=String] name=String options=Object}}`
 
@@ -138,7 +137,7 @@ GoogleMaps.maps.exampleMap.instance
 - options
   - Map initialization options
 
-#### create
+### create
 
 `GoogleMaps.create({object})`
 
@@ -164,7 +163,7 @@ GoogleMaps.create({
 });
 ```
 
-#### load
+### load
 
 `GoogleMaps.load([options])`
 
@@ -177,19 +176,19 @@ Example:
 GoogleMaps.load({ v: '3', key: '12345', libraries: 'geometry,places' });
 ```
 
-#### loadUtilityLibrary
+### loadUtilityLibrary
 
 `GoogleMaps.loadUtilityLibrary('/path/to/library.js')`
 
 A method to ease loading external [utility libraries](https://code.google.com/p/google-maps-utility-library-v3/wiki/Libraries). These libraries will load once the Google Maps API has initialized.
 
-#### loaded
+### loaded
 
 `GoogleMaps.loaded()`
 
 Reactive method which returns `true` once the maps API has loaded, or after manually calling `GoogleMaps.initialize()` (See further down).
 
-#### ready
+### ready
 
 `GoogleMaps.ready('name', callback)`
 
@@ -219,14 +218,14 @@ You can also access this object directly by name:
 GoogleMaps.maps.exampleMap
 ```
 
-#### initialize
+### initialize
 
 `GoogleMaps.initialize()`
 
 This function is passed into the Google maps URL as the callback parameter when calling `GoogleMaps.load()`.
 In the case where the maps library has already been loaded by some other means, calling `GoogleMaps.initialize()` will set `GoogleMaps.loaded()` to `true`.
 
-### Mobile platforms
+## Mobile platforms
 
 If you're targeting mobile platforms you'll need to configure the following access rules in `mobile-config.js`.
 
@@ -238,6 +237,6 @@ App.accessRule('*.gstatic.com/*');
 
 For more refer to the [official documentation](http://docs.meteor.com/#/full/mobileconfigjs).
 
-### License
+## License
 
 MIT
