@@ -113,6 +113,8 @@ Template.googleMap.onRendered(function() {
 });
 
 Template.googleMap.onDestroyed(function() {
-  google.maps.event.clearInstanceListeners(GoogleMaps.maps[this._name].instance);
-  delete GoogleMaps.maps[this._name];
+  if (GoogleMaps[this._name]) {
+    google.maps.event.clearInstanceListeners(GoogleMaps.maps[this._name].instance);
+    delete GoogleMaps.maps[this._name];
+  }
 });
