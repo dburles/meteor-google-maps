@@ -33,13 +33,15 @@ GoogleMaps = {
   },
   _ready: function(name, map) {
     _.each(this._callbacks[name], function(cb) {
-      if (_.isFunction(cb))
+      if (_.isFunction(cb)) {
         cb(map);
+      }
     });
   },
   ready: function(name, cb) {
-    if (! this._callbacks[name])
+    if (! this._callbacks[name]) {
       this._callbacks[name] = [];
+    }
     // make sure we run the callback only once
     // as the tilesloaded event will also run after initial load
     this._callbacks[name].push(_.once(cb));
@@ -73,8 +75,9 @@ GoogleMaps = {
   create: function(options) {
     // default to Map
     var type = options.type ? options.type : 'Map';
-    if (! _.include(supportedTypes, type))
+    if (! _.include(supportedTypes, type)) {
       throw new Meteor.Error("GoogleMaps - Invalid type argument: " + type);
+    }
 
     this._create(options.name, {
       type: type,
@@ -91,13 +94,15 @@ Template.googleMap.onRendered(function() {
     if (GoogleMaps.loaded()) {
       var data = Template.currentData();
 
-      if (! data.options)
+      if (! data.options) {
         return;
-      if (! data.name)
+      }
+      if (! data.name) {
         throw new Meteor.Error("GoogleMaps - Missing argument: name");
+      }
 
       self._name = data.name;
-      
+
       var canvas = self.$('.map-canvas').get(0);
 
       GoogleMaps.create({
