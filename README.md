@@ -59,13 +59,12 @@ if (Meteor.isClient) {
 }
 ```
 
-You can also load the API only on specific routes when using [Iron Router](https://atmospherejs.com/iron/router).
+If you prefer to load the maps API only once it's required, you may do so from within a Template `onRendered` hook.
 
 ```js
-Router.onBeforeAction(function() {
+Template.contact.onRendered(function() {
   GoogleMaps.load();
-  this.next();
-}, { only: ['routeOne', 'routeTwo'] });
+});
 ```
 
 Wrap the map template to set the width and height.
@@ -86,7 +85,7 @@ Wrap the map template to set the width and height.
 }
 ```
 
-Pass through the map initialization options by creating a template helper.
+Pass through the map initialization options by creating a template helper. This will only run once.
 
 ```js
 Template.body.helpers({
@@ -103,7 +102,7 @@ Template.body.helpers({
 });
 ```
 
-Place the `ready` callback within the template `onCreated` callback.
+Place the `ready` callback within the template `onCreated` callback. This is also where you handle map events and reactive updates.
 
 ```js
 Template.body.onCreated(function() {
