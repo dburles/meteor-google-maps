@@ -37,6 +37,8 @@ The maps API is *client-side only*. Server side support may be added soon.
 $ meteor add dburles:google-maps
 ```
 
+Alternatively if you wish to add the package from within another package and have `GoogleMaps` available outside of package scope, use [api.imply](http://docs.meteor.com/#/full/pack_api_imply) in your `package.js`.
+
 ## Examples
 
 [Reactive geolocation](http://meteorcapture.com/reactive-geolocation-with-google-maps)
