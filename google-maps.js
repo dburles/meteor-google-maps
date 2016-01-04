@@ -19,10 +19,16 @@ GoogleMaps = {
   loaded: function() {
     return this._loaded.get();
   },
+  onLoadedHook: null,
+  onLoaded: function(cb) {
+    this.onLoadedHook = cb;
+    if (this.loaded()) this.onLoadedHook.call(this);
+  },
   maps: {},
   _callbacks: {},
   initialize: function() {
     this._loaded.set(true);
+    this.onLoadedHook && this.onLoadedHook.call && this.onLoadedHook.call(this);
     _.each(this.utilityLibraries, function(path) {
       var script = document.createElement('script');
       script.type = 'text/javascript';
