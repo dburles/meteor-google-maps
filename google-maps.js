@@ -118,7 +118,7 @@ Template.googleMap.onRendered(function() {
 });
 
 Template.googleMap.onDestroyed(function() {
-  if (GoogleMaps[this._name]) {
+  if (GoogleMaps.maps[this._name]) {
     google.maps.event.clearInstanceListeners(GoogleMaps.maps[this._name].instance);
     delete GoogleMaps.maps[this._name];
   }
