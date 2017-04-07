@@ -119,6 +119,24 @@ Template.body.onCreated(function() {
 });
 ```
 
+Creating an infowindow for markers (includes a bit of ES6 syntax)
+```
+const content = `
+  <div>
+    <p> Time: <span> ${new Date().getTime()} </span> </p>
+  </div>
+`;
+
+var infowindow = new google.maps.InfoWindow({
+  content: content
+});
+
+marker.addListener('click', function() {
+  infowindow.open(map.instance, marker);
+});
+```
+
+
 Access a map instance any time by using the `maps` object.
 
 ```js
