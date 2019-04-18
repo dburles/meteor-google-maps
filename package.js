@@ -7,14 +7,14 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
-  api.use([
-    'reactive-var',
-    'underscore']);
+  api.use(['reactive-var', 'underscore']);
   api.use('templating', ['client', 'server'], { weak: true });
-  api.addFiles([
-    'google-maps.html',
-    'google-maps.js'], 'client');
+  api.addFiles('google-maps.js', 'client');
   api.export('GoogleMaps', 'client');
+
+  if (Package['templating']) {
+    api.addFiles('google-maps.html', 'client');
+  }
 });
 
 Package.onTest(function(api) {
