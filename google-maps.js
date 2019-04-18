@@ -87,39 +87,41 @@ GoogleMaps = {
   }
 };
 
-Template.googleMap.onRendered(function() {
-  var self = this;
-  self.autorun(function(c) {
-    // if the api has loaded
-    if (GoogleMaps.loaded()) {
-      var data = Template.currentData();
+if (Package["templating"]) {
+  Template.googleMap.onRendered(function() {
+    var self = this;
+    self.autorun(function(c) {
+      // if the api has loaded
+      if (GoogleMaps.loaded()) {
+        var data = Template.currentData();
 
-      if (! data.options) {
-        return;
+        if (! data.options) {
+          return;
+        }
+        if (! data.name) {
+          throw new Meteor.Error("GoogleMaps - Missing argument: name");
+        }
+
+        self._name = data.name;
+
+        var canvas = self.$('.map-canvas').get(0);
+
+        GoogleMaps.create({
+          name: data.name,
+          type: data.type,
+          element: canvas,
+          options: data.options
+        });
+
+        c.stop();
       }
-      if (! data.name) {
-        throw new Meteor.Error("GoogleMaps - Missing argument: name");
-      }
+    });
+  });
 
-      self._name = data.name;
-
-      var canvas = self.$('.map-canvas').get(0);
-
-      GoogleMaps.create({
-        name: data.name,
-        type: data.type,
-        element: canvas,
-        options: data.options
-      });
-
-      c.stop();
+  Template.googleMap.onDestroyed(function() {
+    if (GoogleMaps.maps[this._name]) {
+      google.maps.event.clearInstanceListeners(GoogleMaps.maps[this._name].instance);
+      delete GoogleMaps.maps[this._name];
     }
   });
-});
-
-Template.googleMap.onDestroyed(function() {
-  if (GoogleMaps.maps[this._name]) {
-    google.maps.event.clearInstanceListeners(GoogleMaps.maps[this._name].instance);
-    delete GoogleMaps.maps[this._name];
-  }
-});
+}
